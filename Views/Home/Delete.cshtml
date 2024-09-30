@@ -1,0 +1,10 @@
+﻿@model RetailStore.Models.CustomerProfiles
+
+<h2>Delete Customer</h2>
+<form asp-action="Delete" method="post">
+    @Html.HiddenFor(model => model.RowKey)
+    <p>Are you sure you want to delete this customer?</p>
+    <p><strong>@Model.Name</strong></p>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+</form> 

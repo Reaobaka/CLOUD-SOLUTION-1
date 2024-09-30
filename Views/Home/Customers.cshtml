@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RetailStore.Models.CustomerProfiles>
+
+<h2>Customer List</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<a href="@Url.Action("Create")">Add New Customer</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name(First and Last)</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.EmailAddress</td>
+                <td>@customer.PhoneNumber</td>
+                <td>@customer.HomeAddress</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { rowKey = customer.RowKey})">Edit</a> |
+                    <a href="@Url.Action("Delete", new { rowKey = customer.RowKey})">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
